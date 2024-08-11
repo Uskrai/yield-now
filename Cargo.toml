@@ -1,0 +1,27 @@
+[package]
+name = "yield-now"
+version = "0.1.0"
+edition = "2021"
+homepage = "https://github.com/uskrai/yield-now"
+repository = "https://github.com/uskrai/yield-now.git"
+license = "MIT"
+readme = "README.md"
+description = """
+Wakes current task and returns Poll::Pending once
+"""
+
+[package.metadata.doc.rs]
+all-features = true
+
+[dependencies]
+async-std = { version = "1", optional = true, default-features = false, features = ["std"] }
+futures-lite = { version = "2", optional = true, default-features = false }
+tokio = { version = "1", optional = true, default-features = false, features = ["rt"] }
+
+[features]
+tokio = ["dep:tokio"]
+async-std = ["dep:async-std"]
+futures-lite = ["dep:futures-lite"]
+
+[dev-dependencies]
+spin_on = "0.1.1"
